@@ -138,10 +138,13 @@ function App() {
         so that the other component, the receiving component can use that
         received function, which is received through props, to render some 
         content.*/}
-        <SearchableList items={PLACES}>
+        <SearchableList items={PLACES} itemKeyFn={(item) => item.id}>
           {(item) => <Place item={item} />}
         </SearchableList>
-        <SearchableList items={['city 1', 'city 2', 'city 3']}>
+        <SearchableList
+          items={['city 1', 'city 2', 'city 3']}
+          itemKeyFn={(item) => item}
+        >
           {(item) => item}
         </SearchableList>
       </section>
