@@ -1,8 +1,21 @@
-# React + Vite
+# React Patterns
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## `Compound Components, Render Props & Debouncing`
 
-Currently, two official plugins are available:
+![react patterns](https://i.imgur.com/0LMAnkq.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![react patterns](https://i.imgur.com/jFUAJcT.png)
+
+![react patterns](https://i.imgur.com/mqmsJLQ.png)
+
+![react patterns](https://i.imgur.com/AumP7kG.png)
+
+![react patterns](https://i.imgur.com/wAWElQb.png)
+
+![react patterns](https://i.imgur.com/we3vaZQ.png)
+
+![react patterns](https://i.imgur.com/fH79njg.png)
+
+![react patterns](https://i.imgur.com/StMxxYO.png)
+
+![react patterns](https://i.imgur.com/VxPwGUD.png)
