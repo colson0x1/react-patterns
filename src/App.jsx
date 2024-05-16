@@ -50,6 +50,35 @@
  * And that's a usecase where render props can help us!
  */
 
+/* @ Debouncing Pattern */
+/*
+ * It's another pattern in React which we'll sometimes need actually, not just
+ * in React apps, but possibly in front-end applications in general.
+ * Debouncing:
+ * At current, in that SearchableList component, we are searching those items
+ * in the end upon every keystroke because whenever we type something into
+ * the input field, so on every keystroke, this function `handleChange` there
+ * gets triggered and this `searchTerm` state gets updated i.e setSearchTerm()
+ * which in turn leads to this SearchableList Component being rendered again
+ * which leads to new `searchResults` being produced there.
+ * Dealing with local data, that's not a big problem but it could become
+ * problematic if with every update, we, for example, needed to send a new
+ * HTTP request, or if this filtering i.e `searchResults` logic there
+ * would be more complex and more performance intensive.
+ * In such scenerios, executing this entire component function (i.e `SearchableList`)
+ * and producing a new derived state (i.e `searchResults` there), on every
+ * keystroke in the end can quickly become inefficient.
+ * And Debouncing simply is a technique where we don't update the state on
+ * every keystroke (i.e handleChange fn > setSearchTerm(event.target.value)),
+ * but where we instead define some timing threshold, where we only update
+ * the state if the user stopped typing for a couple of milliseconds, for example.
+ * So that if the user types an entire word, we're not updating the search
+ * results for eveyr character, but only once the word is done, for example.
+ * That's what Debouncing is!
+ *
+ * Example: Debouncing in SearchableList Component
+ */
+
 import Accordion from './components/Accordion/Accordion';
 import SearchableList from './components/SearchableList/SearchableList';
 

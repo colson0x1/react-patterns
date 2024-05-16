@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 export default function SearchableList({ items, itemKeyFn, children }) {
+  const lastChange = useRef();
   const [searchTerm, setSearchTerm] = useState('');
 
   const searchResults = items.filter((item) =>
@@ -8,7 +9,20 @@ export default function SearchableList({ items, itemKeyFn, children }) {
   );
 
   function handleChange(event) {
-    setSearchTerm(event.target.value);
+    // Debouncing
+
+    // If we have a currently ongoing timer, we clear it
+    if (lastChange.current) {
+      clearTimeout(lastChange.current);
+    }
+
+    // Start a new one
+    // Store timerId in ref
+    lastChange.current = setTimeout(() => {
+      // Clear the stored timer identifier
+      lastChange.current = null;
+      setSearchTerm(event.target.value);
+    }, 500);
   }
 
   // Problem now we're facing is that this Searchable list is great at searching
