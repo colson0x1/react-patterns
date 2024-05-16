@@ -58,6 +58,7 @@ import amazonImg from './assets/amazon-river.jpg';
 import caribbeanImg from './assets/caribbean-beach.jpg';
 import desertImg from './assets/desert-dunes.jpg';
 import forestImg from './assets/forest-waterfall.jpg';
+import Place from './Place';
 
 const PLACES = [
   {
@@ -132,8 +133,17 @@ function App() {
           </Accordion.Item>
         </Accordion>
 
-        <SearchableList items={PLACES} />
-        <SearchableList items={['city 1', 'city 2', 'city 3']} />
+        {/* Render Props Pattern:
+        We're passing a function as a value for the children prop in this case
+        so that the other component, the receiving component can use that
+        received function, which is received through props, to render some 
+        content.*/}
+        <SearchableList items={PLACES}>
+          {(item) => <Place item={item} />}
+        </SearchableList>
+        <SearchableList items={['city 1', 'city 2', 'city 3']}>
+          {(item) => item}
+        </SearchableList>
       </section>
     </main>
   );
