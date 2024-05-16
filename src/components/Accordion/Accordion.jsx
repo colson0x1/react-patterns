@@ -2,8 +2,7 @@ import { createContext, useContext, useState } from 'react';
 
 const AccordionContext = createContext({
   openItemId: null,
-  openItem: (id) => {},
-  closeItem: () => {},
+  toggleItem: (id) => {},
 });
 
 // custom hook
@@ -26,18 +25,15 @@ export function useAccordionContext() {
 export default function Accordion({ children, className }) {
   const [openItemId, setOpenItemId] = useState();
 
-  function openItem(id) {
-    setOpenItemId(id);
-  }
-
-  function closeItem() {
-    setOpenItemId(null);
+  // refactor openItem, closeItem to one fn
+  function toggleItem(id) {
+    // Updating state based on the old state so using the function form
+    setOpenItemId((prevId) => (prevId === id ? null : id));
   }
 
   const contextValue = {
     openItemId,
-    openItem,
-    closeItem,
+    toggleItem,
   };
 
   return (
